@@ -8,23 +8,25 @@ import { system } from '@workday/canvas-tokens-web';
 import { useDirection } from './useDirection';
 import './index.css';
 
+// More dramatic spacing differences for better visualization
+// xs = x1 (4px), sm = x4 (16px), md = x8 (32px), lg = x14 (56px), xl = x16 (64px), xxl = x20 (80px)
 const space = {
-  xs: system.space.x1,
-  sm: system.space.x2,
-  md: system.space.x4,
-  lg: system.space.x6,
-  xl: system.space.x8,
-  xxl: system.space.x10,
+  xs: system.space.x1,   // 4px
+  sm: system.space.x4,   // 16px
+  md: system.space.x8,   // 32px
+  lg: system.space.x14,  // 56px
+  xl: system.space.x16,  // 64px
+  xxl: system.space.x20, // 80px
 };
 
 const styles = {
   container: createStyles({
     flexDirection: 'column',
-    gap: space.md,
-    padding: space.md,
+    gap: system.space.x4,     // Keep container gap moderate (16px)
+    padding: system.space.x4, // Keep container padding moderate (16px)
   }),
   exampleRow: createStyles({
-    gap: space.sm,
+    gap: system.space.x2,     // Keep row gap small (8px)
     alignItems: 'stretch',
   }),
   exampleColumn: createStyles({
@@ -42,13 +44,13 @@ const styles = {
     justifyContent: 'center',
     flexDirection: 'column',
     flex: 1,
-    padding: space.md,
+    padding: system.space.x4, // Fixed 16px padding
   }),
   label: createStyles({
     fontSize: system.fontSize.body.small,
     color: system.color.text.default,
     fontWeight: system.fontWeight.bold,
-    marginBottom: space.sm,
+    marginBottom: system.space.x2, // Fixed 8px margin
   }),
   // Wrapper container for heading - provides visual outline
   headingContainer: createStyles({
