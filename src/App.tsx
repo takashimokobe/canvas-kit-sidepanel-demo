@@ -6,10 +6,8 @@ import { CanvasProvider } from '@workday/canvas-kit-react/common';
 import { createStyles, px2rem } from '@workday/canvas-kit-styling';
 import { system } from '@workday/canvas-tokens-web';
 import { useDirection } from './useDirection';
-import './App.css';
+import './index.css';
 
-// T-shirt size mapping for Canvas Tokens v4 spacing
-// xs = x1 (4px), sm = x2 (8px), md = x4 (16px), lg = x6 (24px), xl = x8 (32px), xxl = x10 (40px)
 const space = {
   xs: system.space.x1,
   sm: system.space.x2,
