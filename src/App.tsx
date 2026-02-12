@@ -34,7 +34,7 @@ const styles = {
     flex: 1,
   }),
   viewport: createStyles({
-    height: px2rem(280),
+    height: px2rem(320),
     backgroundColor: system.color.bg.alt.default,
     border: `1px solid ${system.color.border.divider}`,
     borderRadius: system.shape.x2,
@@ -93,9 +93,17 @@ interface PanelExampleProps {
   label: string;
   headingStyle: string;
   variant?: 'standard' | 'alternate';
+  expandedWidth?: number;
+  collapsedWidth?: number;
 }
 
-function PanelExample({ label, headingStyle, variant = 'alternate' }: PanelExampleProps) {
+function PanelExample({ 
+  label, 
+  headingStyle, 
+  variant = 'alternate',
+  expandedWidth = 320,
+  collapsedWidth = 64
+}: PanelExampleProps) {
   const model = useSidePanelModel();
   const isExpanded =
     model.state.transitionState === 'expanded' || model.state.transitionState === 'expanding';
@@ -104,7 +112,12 @@ function PanelExample({ label, headingStyle, variant = 'alternate' }: PanelExamp
     <Flex cs={styles.exampleColumn}>
       <Text cs={styles.label}>{label}</Text>
       <Flex cs={styles.viewport}>
-        <SidePanel model={model} variant={variant}>
+        <SidePanel 
+          model={model} 
+          variant={variant}
+          expandedWidth={expandedWidth}
+          collapsedWidth={collapsedWidth}
+        >
           <SidePanel.ToggleButton />
           <Flex cs={styles.headingContainer}>
             <SidePanel.Heading size="small" hidden={!isExpanded} cs={headingStyle}>
@@ -138,23 +151,63 @@ export default function App() {
         </Flex>
 
         <Flex cs={styles.exampleRow}>
-          <PanelExample label="No Padding" headingStyle={styles.headingNoPadding} />
-          <PanelExample label="Extra Small (xs)" headingStyle={styles.headingXs} />
+          <PanelExample 
+            label="No Padding" 
+            headingStyle={styles.headingNoPadding}
+            expandedWidth={200}
+            collapsedWidth={56}
+          />
+          <PanelExample 
+            label="Extra Small (xs)" 
+            headingStyle={styles.headingXs}
+            expandedWidth={220}
+            collapsedWidth={60}
+          />
         </Flex>
 
         <Flex cs={styles.exampleRow}>
-          <PanelExample label="Small (sm)" headingStyle={styles.headingSm} />
-          <PanelExample label="Medium (md)" headingStyle={styles.headingMd} />
+          <PanelExample 
+            label="Small (sm)" 
+            headingStyle={styles.headingSm}
+            expandedWidth={260}
+            collapsedWidth={64}
+          />
+          <PanelExample 
+            label="Medium (md)" 
+            headingStyle={styles.headingMd}
+            expandedWidth={320}
+            collapsedWidth={80}
+          />
         </Flex>
 
         <Flex cs={styles.exampleRow}>
-          <PanelExample label="Large (lg)" headingStyle={styles.headingLg} />
-          <PanelExample label="Extra Large (xl)" headingStyle={styles.headingXl} />
+          <PanelExample 
+            label="Large (lg)" 
+            headingStyle={styles.headingLg}
+            expandedWidth={380}
+            collapsedWidth={96}
+          />
+          <PanelExample 
+            label="Extra Large (xl)" 
+            headingStyle={styles.headingXl}
+            expandedWidth={440}
+            collapsedWidth={112}
+          />
         </Flex>
 
         <Flex cs={styles.exampleRow}>
-          <PanelExample label="Asymmetric Padding" headingStyle={styles.headingAsymmetric} />
-          <PanelExample label="Medium (Baseline)" headingStyle={styles.headingMd} />
+          <PanelExample 
+            label="Asymmetric Padding" 
+            headingStyle={styles.headingAsymmetric}
+            expandedWidth={350}
+            collapsedWidth={72}
+          />
+          <PanelExample 
+            label="Medium (Baseline)" 
+            headingStyle={styles.headingMd}
+            expandedWidth={320}
+            collapsedWidth={80}
+          />
         </Flex>
 
         <Flex cs={styles.exampleRow}>
@@ -162,11 +215,15 @@ export default function App() {
             label="Standard Variant (md)"
             headingStyle={styles.headingMd}
             variant="standard"
+            expandedWidth={300}
+            collapsedWidth={70}
           />
           <PanelExample
             label="Alternate Variant (md)"
             headingStyle={styles.headingMd}
             variant="alternate"
+            expandedWidth={340}
+            collapsedWidth={90}
           />
         </Flex>
       </Flex>
