@@ -52,40 +52,45 @@ const styles = {
     fontWeight: system.fontWeight.bold,
     marginBottom: system.space.x2, // Fixed 8px margin
   }),
-  // Wrapper container for heading - provides visual outline
-  headingContainer: createStyles({
-    outline: '2px solid red',
-  }),
   // Different padding variations for heading (using t-shirt sizes)
-  // Applied directly to heading element
+  // Red outline + light background to visualize padding area
   headingNoPadding: createStyles({
     padding: system.space.zero,
+    outline: '3px solid red',
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
   }),
   headingXs: createStyles({
-    paddingY: space.xs,
-    paddingX: space.xs,
+    padding: space.xs,      // 4px all sides
+    outline: '3px solid red',
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
   }),
   headingSm: createStyles({
-    paddingY: space.sm,
-    paddingX: space.sm,
+    padding: space.sm,      // 16px all sides
+    outline: '3px solid red',
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
   }),
   headingMd: createStyles({
-    paddingY: space.md,
-    paddingX: space.md,
+    padding: space.md,      // 32px all sides
+    outline: '3px solid red',
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
   }),
   headingLg: createStyles({
-    paddingY: space.lg,
-    paddingX: space.lg,
+    padding: space.lg,      // 56px all sides
+    outline: '3px solid red',
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
   }),
   headingXl: createStyles({
-    paddingY: space.xl,
-    paddingX: space.xl,
+    padding: space.xl,      // 64px all sides
+    outline: '3px solid red',
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
   }),
   headingAsymmetric: createStyles({
     paddingTop: space.xs,
     paddingBottom: space.lg,
     paddingLeft: space.xl,
     paddingRight: space.xs,
+    outline: '3px solid red',
+    backgroundColor: 'rgba(255, 0, 0, 0.1)',
   }),
 };
 
@@ -119,11 +124,9 @@ function PanelExample({
           collapsedWidth={collapsedWidth}
         >
           <SidePanel.ToggleButton />
-          <Flex cs={styles.headingContainer}>
-            <SidePanel.Heading size="small" hidden={!isExpanded} cs={headingStyle}>
-              {label}
-            </SidePanel.Heading>
-          </Flex>
+          <SidePanel.Heading size="small" hidden={!isExpanded} cs={headingStyle}>
+            {label}
+          </SidePanel.Heading>
         </SidePanel>
         <Flex as="main" cs={styles.main}>
           <Text as="p" typeLevel="body.small" textAlign="center">
